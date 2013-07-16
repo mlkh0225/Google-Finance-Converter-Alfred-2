@@ -21,11 +21,11 @@ DEFAULTAMOUNT='1'
 # ------------------------------------------------------------
 # Before using this in alfred replace $1 in the following line with {query}.
 # Replace currency symbols with their 3 letter codes.
-QUERY=`echo {query} " " | sed "s/ $ / USD /g;s/ € / EUR /g;s/ £ / GBP /g;s/ ¥ / JPY /g"`
+QUERY=`echo {query} " " | sed "s/ NTD / TWD /g;s/ RMB / CNY /g;s/ $ / USD /g;s/ € / EUR /g;s/ £ / GBP /g;s/ ¥ / JPY /g"`
 
 # 將 Alfred 查詢字串切割成四個部分，'金額' '轉換幣值' '=' '目標幣值'：
 AMOUNT=`echo $QUERY | awk '{ print toupper($1); }' | sed 's/,/./g'`
-INPUT=`echo $QUERY | awk '{ print toupper($2); }' `
+INPUT=`echo $QUERY | awk '{ print toupper($2); }'`
 TO=`echo $QUERY | awk '{ print toupper($3); }'`
 TARGET=`echo $QUERY | awk '{ print toupper($4); }'`
 NUMBERAMOUNT=`echo $AMOUNT | awk '/[0-9]/ { print substr($1,1); }' `
