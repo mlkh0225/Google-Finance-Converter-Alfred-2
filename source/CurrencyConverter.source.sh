@@ -24,7 +24,7 @@ DEFAULTAMOUNT='1'
 QUERY=`echo {query} " " | sed "s/ NTD / TWD /g;s/ RMB / CNY /g;s/ $ / USD /g;s/ € / EUR /g;s/ £ / GBP /g;s/ ¥ / JPY /g"`
 
 # 將 Alfred 查詢字串切割成四個部分，'金額' '轉換幣值' '=' '目標幣值'：
-AMOUNT=`echo $QUERY | awk '{ print toupper($1); }' | sed 's/,/./g'`
+AMOUNT=`echo $QUERY | awk '{ print toupper($1); }' | sed 's/,//g'`
 INPUT=`echo $QUERY | awk '{ print toupper($2); }'`
 TO=`echo $QUERY | awk '{ print toupper($3); }'`
 TARGET=`echo $QUERY | awk '{ print toupper($4); }'`
